@@ -1,0 +1,47 @@
+@import '../../assets/variables.scss';
+
+
+.my-container{
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.maincontent-div {
+    height: 350px;
+}
+
+.summary-div {
+    height: inherit;
+}
+
+.answer-text {
+    color: grey;
+    font-weight: bold;
+}
+
+.bold-text {
+    font-family: 'myFont2';
+}
+
+.history-div {
+    border: 1px solid black;
+    padding: 2em;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.custom-button {
+    width: 50%;
+    text-align: center;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+}
+
+
+

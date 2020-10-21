@@ -1,0 +1,66 @@
+<div class="my-container" >
+  <div class="maincontent-div" *ngIf = 'quizSelection$ | async as quizSelected' >
+
+      <div class="name-input" *ngIf = 'quizSelected[0]' >
+          <form [formGroup] = "nameForm" >
+            <mat-form-field >
+              <mat-label>Enter your name</mat-label>
+              <input matInput  formControlName = "enterName"  >
+            </mat-form-field>
+            <mat-error *ngIf="nameForm.get('enterName').errors?.minlength"  >
+              Name must be atleast 4 letters
+            </mat-error>
+            <div>
+                <button [disabled] = "nameForm.get('enterName').errors?.minlength" type="submit"
+                class="btn btn-secondary custom-button  " (click) = "nameState(1)"  >Start</button>
+            </div>
+          </form>
+      </div> 
+      
+      
+      <div class="ques-1"  *ngIf = 'quizSelected[1]' >
+        <div class="ques-box" >
+          <h2 class="bold-text" >Who is the best cricketer in the world?</h2>
+        </div>      
+        <mat-selection-list  #shoes [multiple]="false">
+          <mat-list-option  *ngFor="let player of typesOfPlayers" [value]="player" >
+            {{player}}
+          </mat-list-option>
+        </mat-selection-list> 
+        <p *ngIf = 'shoes.selectedOptions.selected[0]?.value' >
+          Option selected: {{shoes.selectedOptions.selected[0]?.value}}
+        </p>
+        <button type="button"  [disabled] = '!shoes.selectedOptions.selected[0]?.value' 
+                  class="btn btn-secondary custom-button"  (click) = "ques1State(shoes.selectedOptions.selected[0]?.value,2)" >Next</button>
+
+      </div>
+
+      <div class="ques-2" *ngIf = 'quizSelected[2]' >
+          <div>
+            <div class="ques-box" >
+              <h2 class="bold-text" >What are the colors in the Indian national flag?</h2>
+            </div>
+            <mat-selection-list #colors   >
+              <mat-list-option *ngFor="let color of typesOfColors" 
+                                 [value] = "color" >
+                {{color}}
+              </mat-list-option>
+              <mat-error *ngIf="colors.selectedOptions.selected.length <=  1 && 
+                                colors.selectedOptions.selected.length !==0  "  >
+                     Select more than 1
+                </mat-error>
+                <div>  
+                  <button type="button" [disabled] = 'colors.selectedOptions.selected.length < 2 ' 
+                          (click) = 'submitTest(colors.selectedOptions.selected)' 
+                          [routerLink] = "['/summary']"
+                          class="btn btn-secondary custom-button" >Next</button>
+                </div>
+
+            </mat-selection-list>  
+            
+          </div>
+      </div>
+  </div>
+</div>
+
+  

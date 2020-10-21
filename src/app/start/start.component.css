@@ -1,0 +1,33 @@
+@import '../../assets/variables.scss';
+
+.bold-text {
+    font-family: 'myFont2';
+}
+
+.my-container {
+    height: 450px;
+}
+
+.maincontent-div {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-button {
+    width: 100%!important;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+

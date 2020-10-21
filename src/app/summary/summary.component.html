@@ -1,0 +1,46 @@
+<div class="my-container" >
+    <div class="maincontent-div"  >
+        <div *ngIf = 'summary$ | async as summary' class="summary-div">
+            <div class="ques-box" >
+                <h2 class="bold-text" >Date: <span class="answer-text" > {{myObj.date}} </span>   </h2>
+                <h2 class="bold-text" >Name:  <span class="answer-text" > {{myObj.name}} </span>  </h2>
+            </div>
+            <div class="ques-box" >
+                <h2 class="bold-text" >Who is the best cricketer in the world?</h2>
+                <h4>Answer:  <span class=" bold-text answer-text" >{{myObj.ques1}}</span>  </h4>
+            </div>
+            <div class="ques-box" >
+                <h2 class="bold-text" >What are the colors in the Indian national flag?</h2>
+                <h4>Answer:  <span class="bold-text answer-text" >{{myObj.ques2}}</span></h4>
+            </div>
+            <div class="d-flex" >
+                <button  [routerLink] = "['/start']" (click) = 'quizStateChange()' class="btn btn-secondary m-2 custom-button " >Finish</button>
+                <button (click) = 'changeState(false)'  class="btn btn-secondary m-2 custom-button " > History </button>
+            </div>
+        </div>
+
+        <div *ngIf = '!(summary$ | async)'  >
+            <div class="history-div" >
+                <div *ngFor = 'let answer of arrayTest' class="history-box" >
+                    <div class="ques-box" >
+                        <h2 class="bold-text" >Date: <span class="answer-text" > {{answer.date}} </span>   </h2>
+                        <h2 class="bold-text" >Name:  <span class="answer-text" > {{answer.name}} </span>  </h2>
+                    </div>
+                    <div class="ques-box" >
+                        <h2 class="bold-text" >Who is the best cricketer in the world?</h2>
+                        <h4>Answer:  <span class="answer-text bold-text" >{{answer.ques1}}</span>  </h4>
+                    </div>
+                    <div class="ques-box" >
+                        <h2 class="bold-text" >What are the colors in the Indian national flag?</h2>
+                        <h4>Answer:  <span class="answer-text bold-text " >{{answer.ques2}}</span></h4>
+                    </div>
+                    <hr>
+                </div> 
+            </div>
+            <div class="button-box" >
+                <button [routerLink] = "['/start']" (click) = 'quizStateChange()' class="btn btn-secondary m-2 custom-button"  >Home</button>
+            </div>    
+        </div>
+    </div>
+    
+</div>
